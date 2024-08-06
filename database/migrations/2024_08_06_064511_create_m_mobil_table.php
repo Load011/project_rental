@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('m_mobil', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_mobil');
+            $table->decimal('harga_sewa', 10,0);
+            $table->string('deskripsi_mobil');
+            $table->integer('mileage');
+            $table->string('foto_mobil');
+            $table->integer('tmp_duduk');
+            $table->string('bahan_bakar');
             $table->timestamps();
         });
     }

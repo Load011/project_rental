@@ -11,7 +11,7 @@
   
     <!-- Sidebar Menu -->
     <nav class="mt-2">
-      {{-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
           <a href="{{ route('dashboard') }}" class="nav-link @if (request()->routeIs('dashboard')) active @endif">
             <i class="nav-icon fas fa-desktop"></i>
@@ -32,27 +32,27 @@
                 <p>Mobil</p>
               </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="{{ route('penyewa.index') }}" class="nav-link @if (request()->routeIs('penyewa.*')) active @endif">
                 <i class="nav-icon fas fa-users"></i>
                 <p>Penyewa</p>
               </a>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
               <a href="{{ route('supir.index') }}" class="nav-link @if (request()->routeIs('supir.*')) active @endif">
                 <i class="nav-icon fas fa-user-tie"></i>
                 <p>Supir Mobil</p>
               </a>
-            </li>
+            </li> --}}
           </ul>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="{{ route('transaksi.index') }}" class="nav-link @if (request()->routeIs('transaksi.*')) active @endif">
             <i class="nav-icon fas fa-money-check"></i>
             <p>Transaksi</p>
           </a>
-        </li>
-      </ul> --}}
+        </li> --}}
+      </ul>
     </nav>
     <!-- /.sidebar-menu -->
   </div>
