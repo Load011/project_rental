@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SewaController;
+use App\Http\Controllers\SupirController;
 
 Route::get('/', function () {
     return view('frontend.dashboard');
@@ -42,6 +43,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/rental/{rental}/edit', [SewaController::class, 'edit'])->name('sewa.edit');
     Route::put('/rental/{rental}', [SewaController::class, 'update'])->name('sewa.update');
     Route::delete('/rental/{rental}', [SewaController::class, 'destroy'])->name('sewa.destroy');
+
+    Route::get('/supir', [SupirController::class, 'index'])->name('supir.index');
+    Route::get('/supir/create', [SupirController::class, 'create'])->name('supir.create');
+    Route::post('/supir', [SupirController::class, 'store'])->name('supir.store');
+    Route::get('/supir/{supir}', [SupirController::class, 'show'])->name('supir.show');
+    Route::get('/supir/{supir}/edit', [SupirController::class, 'edit'])->name('supir.edit');
+    Route::put('/supir/{supir}', [SupirController::class, 'update'])->name('supir.update');
+    Route::delete('/supir/{supir}', [SupirController::class, 'destroy'])->name('supir.destroy');
 
 });
 

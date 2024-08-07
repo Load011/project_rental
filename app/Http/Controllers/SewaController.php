@@ -27,6 +27,7 @@ class SewaController extends Controller
             'alamat_penyewa' => 'required',
             'email_penyewa' => 'required',
             'lama_sewa' => 'required|integer',
+            'penjemputan' =>'required'
         ]);
 
         $car = MobilRental::findOrFail($request->id_mobil);
@@ -39,6 +40,7 @@ class SewaController extends Controller
             'alamat_penyewa' => $request->alamat_penyewa,
             'email_penyewa' => $request->email_penyewa,
             'lama_sewa' => $request->lama_sewa,
+            'penjemputan' => $request->penjemputan,
             'harga_penyewaan' => $harga_penyewaan,
         ]);
 

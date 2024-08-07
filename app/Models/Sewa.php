@@ -18,7 +18,8 @@ class Sewa extends Model
         'alamat_penyewa',
         'email_penyewa',
         'lama_sewa',
-        'harga_penyewaan'
+        'harga_penyewaan',
+        'penjemputan'
     ];
 
     public function mobil()

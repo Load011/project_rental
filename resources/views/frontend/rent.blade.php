@@ -48,6 +48,7 @@
           </div>
       </div>
   </section>
+  
 <section class="ftco-section ftco-about">
     <div class="container">
         <div class="row">
@@ -56,6 +57,10 @@
             </div>
             <div class="col-md-8 ftco-animate">
                 <div class="heading-section pl-md-8">
+                  @if(session('success'))
+                    <h2>{{ session('success') }}</h2>
+                    <p>Kami akan segera hubungi kamu secepatnya</p>
+                  @else
                     <form action="{{route('sewa.store')}}" method="POST">
                       @csrf
                       <div class="form-group">
@@ -86,6 +91,10 @@
                         <input type="text" class="form-control" id="email_penyewa" name="email_penyewa" value="{{old('email_penyewa')}}" required>
                     </div>
                     <div class="form-group">
+                      <label for="penjemputan">Kapan Kamu Dijemput?</label>
+                      <input type="date" class="form-control" id="penjemputan" name="penjemputan" value="{{old('penjemputan')}}" required>
+                  </div>
+                    <div class="form-group">
                         <label for="lama_sewa">Berapa lama sewanya (hari)?</label>
                         <input type="number" class="form-control" id="lama_sewa" name="lama_sewa" value="{{old('lama_sewa')}}" required>
                     </div>
@@ -93,6 +102,7 @@
                     </form>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </section>

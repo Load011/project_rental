@@ -21,6 +21,8 @@ class MobilController extends Controller
 
     public function store(Request $request)
     {
+        $request['harga_sewa'] = $this->convertToNumeric($request['harga_sewa']);
+
         $validatedData = $request->validate([
             'nama_mobil' => 'required|string|max:255',
             'harga_sewa' => 'required|numeric',
@@ -48,5 +50,10 @@ class MobilController extends Controller
         $car->save();
 
         return redirect()->route('mobil.index')->with('success', 'Mobil successfully added');
+    }
+
+    private function convertToNumeric($value)
+    {
+        return empty($value) ? null : floatval(str_replace('.', '', $value));
     }
 }

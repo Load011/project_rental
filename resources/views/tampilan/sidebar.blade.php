@@ -32,23 +32,17 @@
                 <p>Mobil</p>
               </a>
             </li>
-            {{-- <li class="nav-item">
-              <a href="{{ route('penyewa.index') }}" class="nav-link @if (request()->routeIs('penyewa.*')) active @endif">
-                <i class="nav-icon fas fa-users"></i>
-                <p>Penyewa</p>
-              </a>
-            </li> --}}
-            {{-- <li class="nav-item">
+            <li class="nav-item">
               <a href="{{ route('supir.index') }}" class="nav-link @if (request()->routeIs('supir.*')) active @endif">
                 <i class="nav-icon fas fa-user-tie"></i>
-                <p>Supir Mobil</p>
+                <p>Supir</p>
               </a>
-            </li> --}}
+            </li>
           </ul>
         </li>
         <li class="nav-item @if (request()->routeIs('sewa.*')) menu-open @endif">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-database"></i>
+            <i class="nav-icon fas fa-money-check"></i>
             <p>Transaksi Rental
               <i class="right fas fa-angle-left"></i>
             </p>

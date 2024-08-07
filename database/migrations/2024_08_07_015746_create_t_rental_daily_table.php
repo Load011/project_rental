@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('no_hp');
             $table->string('alamat_penyewa');
             $table->string('email_penyewa');
-            $table->integer('lama_sewa');            
+            $table->integer('lama_sewa');
+            $table->dateTime('penjemputan');
             $table->timestamps();
         });
     }

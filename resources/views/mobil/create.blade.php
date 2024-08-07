@@ -22,7 +22,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="harga_sewa">Harga Sewa</label>
-                                        <input type="number" name="harga_sewa" class="form-control" required>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Rp</span>
+                                            </div>
+                                            <input type="text" name="harga_sewa" id="harga_sewa" class="form-control currency" onkeyup="formatInput(this)">
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="deskripsi_mobil">Deskripsi Mobil</label>
@@ -58,4 +63,27 @@
             </div>
         </div>
     </section>
+    
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js"></script>
+
+<script>
+    function formatInput(input) {
+        let value = input.value.replace(/[^0-9]/g, '');
+        if (value) {
+            value = parseInt(value, 10).toLocaleString('en-US').replace(/,/g, '.');
+        }
+        input.value = value;
+    }
+    function unformatInput(input) {
+        return input.value.replace(/[^0-9.]/g, '').replace(/\./g, '');
+    }
+    document.getElementById('currencyForm').addEventListener('submit', function(event) {
+        let currencyFields = document.querySelectorAll('.currency');
+        currencyFields.forEach(function(field) {
+            field.value = unformatInput(field);
+        });
+    });
+</script>
 @endsection
