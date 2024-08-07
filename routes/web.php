@@ -10,6 +10,7 @@ use App\Http\Controllers\MobilController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SewaController;
 use App\Http\Controllers\SupirController;
+use App\Http\Controllers\TransaksiController;
 
 Route::get('/', function () {
     return view('frontend.dashboard');
@@ -51,6 +52,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/supir/{supir}/edit', [SupirController::class, 'edit'])->name('supir.edit');
     Route::put('/supir/{supir}', [SupirController::class, 'update'])->name('supir.update');
     Route::delete('/supir/{supir}', [SupirController::class, 'destroy'])->name('supir.destroy');
+
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create');
+    Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
+    Route::get('/transaksi/{transaksi}/edit', [SupirController::class, 'edit'])->name('transaksi.edit');
+    Route::delete('/transaksi/{transaksi}', [SupirController::class, 'destroy'])->name('transaksi.destroy');
+
+
+
 
 });
 

@@ -7,18 +7,18 @@
                 <div class="col-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Supir Rental</h3>
+                            <h3 class="card-title">Aktivasi Pesanan</h3>
                         </div>
 
                         <div class="card-body">
                             <div>
-                                <a href="{{ route('supir.create')}}" class="btn btn-success mb-3">
+                                <a href="{{ route('transaksi.create')}}" class="btn btn-success mb-3">
                                     <i class="fas fa-plus"></i>
-                                    <span>Tambah Supir</span>
+                                    <span>Atur Pemesanan</span>
                                 </a>
-                                @if($drivers->isEmpty())
+                                @if($traqs->isEmpty())
                                 <div class="alert alert-info">
-                                    Tidak Ada Supir Tersedia
+                                    Belum ada pesanan yang direalisasikan
                                 </div>
                                 @else
                             </div>
@@ -26,28 +26,27 @@
                                 <thead class="thead-fixed">
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama Supir</th>
-                                        <th>No SIM Supir</th>
-                                        <th>No Telepon Supir</th>
-                                        <th>No KTP Supir</th>
-                                        <th>Alamat Supir</th>
-                                        <th>Aksi Tambahan</th>
+                                        <th>Nama Penyewa</th>
+                                        <th>Mobil Yang Disewa</th>
+                                        <th>Lama Penyewaan</th>
+                                        <th>Supir</th>
+                                        <th>Upah Supir</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach($drivers as $index=>$driver)
+                                    @foreach($traqs as $index=>$traq)
                                     <tr>
                                         <td>{{$index+1}}</td>
-                                        <td>{{$driver->nama_supir}}</td>
-                                        <td>{{$driver->no_sim}}</td>
-                                        <td>{{$driver->no_tlp}}</td>
-                                        <td>{{$driver->no_ktp}}</td>
-                                        <td>{{$driver->alamat_supir}}</td>
+                                        <td>{{$traq->sewa->nama_penyewa}}</td>
+                                        <td>{{ $traq->sewa->mobil->nama_mobil }}</td> <!-- Display nama_mobil here -->
+                                        <td>{{$traq->sewa->lama_sewa}} hari</td>
+                                        <td>{{$traq->supir->nama_supir}}</td>
+                                        <td>Rp {{ number_format($traq->upah_supir, 0, ',', '.') }}</td> <!-- Add thousands separator -->
                                         <td>
-                                            <a href="{{ route('supir.edit', $driver->id) }}"
+                                            <a href="{{ route('transaksi.edit', $traq->id) }}"
                                                 class="btn btn-secondary btn-sm">Edit</a>
-                                            <form action="{{ route('supir.destroy', $driver->id) }}" method="POST"
+                                            <form action="{{ route('transaksi.destroy', $traq->id) }}" method="POST"
                                                 style="display: inline-block;">
                                                 @csrf
                                                 @method('DELETE')

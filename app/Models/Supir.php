@@ -19,4 +19,9 @@ class Supir extends Model
         'no_sim',
         'alamat_supir'
     ];
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_supir');
+    }
 }

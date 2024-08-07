@@ -26,4 +26,9 @@ class Sewa extends Model
     {
         return $this->belongsTo(MobilRental::class, 'id_mobil');
     }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_pesanan');
+    }
 }

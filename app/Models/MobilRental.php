@@ -20,4 +20,8 @@ class MobilRental extends Model
         'tmp_duduk',
         'bahan_bakar'
     ];
+    public function sewas()
+    {
+        return $this->hasMany(Sewa::class, 'id_mobil');
+    }
 }

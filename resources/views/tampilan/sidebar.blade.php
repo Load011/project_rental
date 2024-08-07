@@ -54,6 +54,12 @@
                 <p>Sewa Mobil</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('transaksi.index') }}" class="nav-link @if (request()->routeIs('transaksi.*')) active @endif">
+                <i class="nav-icon fas fa-handshake"></i>
+                <p>Transaksi Pernyewaan</p>
+              </a>
+            </li>
           </ul>
         </li>
         {{-- <li class="nav-item">

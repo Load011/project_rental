@@ -56,14 +56,17 @@ data-stellar-background-ratio="0.5">
       </div>
     </div>
     <div class="col-md-3">
-      <div class="services services-2 w-100 text-center">
-        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span>
+      <a href="{{route('frontend.rent')}}">
+        <div class="services services-2 w-100 text-center">
+          <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span>
+          </div>
+          <div class="text w-100">
+            <h3 class="heading mb-2">Whole City Tour</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+          </div>
         </div>
-        <div class="text w-100">
-          <h3 class="heading mb-2">Whole City Tour</h3>
-          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-        </div>
-      </div>
+      </a>
+      
     </div>
   </div>
 </div>
