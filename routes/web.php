@@ -8,8 +8,13 @@ use App\Http\Controllers\Frontend\DashboardController;
 
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SewaController;
 
 Route::get('/', function () {
+    return view('frontend.dashboard');
+});
+
+Route::get('/admin', function () {
     return view('auth.login');
 });
 
@@ -22,19 +27,29 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //Route untuk Frontend
-    Route::get('/user', [DashboardController::class, 'index'])->name('frontend.dashboard');
-    Route::get('/cars', [CarController::class, 'index'])->name('frontend.car');
-    Route::get('/car/{id}', [CarController::class, 'show'])->name('car.show');
-    Route::get('/service', [ServiceController::class, 'index'])->name('frontend.service');
-
-
     Route::get('/mobil', [MobilController::class, 'index'])->name('mobil.index');
     Route::get('/mobil/create', [MobilController::class, 'create'])->name('mobil.create');
     Route::post('/mobil', [MobilController::class, 'store'])->name('mobil.store');
     Route::get('/mobil/{mobil}', [MobilController::class, 'show'])->name('mobil.show');
     Route::get('/mobil/{mobil}/edit', [MobilController::class, 'edit'])->name('mobil.edit');
     Route::put('/mobil/{mobil}', [MobilController::class, 'update'])->name('mobil.update');
-    Route::delete('/mobil/{mobil}', [MobilController::class, 'destroy'])->name('mobil.destroy');});
+    Route::delete('/mobil/{mobil}', [MobilController::class, 'destroy'])->name('mobil.destroy');
+
+    Route::get('/rental', [SewaController::class, 'index'])->name('sewa.index');
+    Route::get('/service/rental', [SewaController::class, 'create'])->name('sewa.create');
+    Route::post('/rental', [SewaController::class, 'store'])->name('sewa.store');
+    Route::get('/rental/{rental}', [SewaController::class, 'show'])->name('sewa.show');
+    Route::get('/rental/{rental}/edit', [SewaController::class, 'edit'])->name('sewa.edit');
+    Route::put('/rental/{rental}', [SewaController::class, 'update'])->name('sewa.update');
+    Route::delete('/rental/{rental}', [SewaController::class, 'destroy'])->name('sewa.destroy');
+
+});
+
+    //Route untuk Frontend
+    Route::get('/user', [DashboardController::class, 'index'])->name('frontend.dashboard');
+    Route::get('/cars', [CarController::class, 'index'])->name('frontend.car');
+    Route::get('/car/{id}', [CarController::class, 'show'])->name('car.show');
+    Route::get('/service', [ServiceController::class, 'index'])->name('frontend.service');
+    Route::get('/service/rental', [ServiceController::class, 'rental'])->name('frontend.rent');
 
 require __DIR__.'/auth.php';

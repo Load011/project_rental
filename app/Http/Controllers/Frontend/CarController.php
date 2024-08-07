@@ -14,9 +14,9 @@ class CarController extends Controller
     }
     public function show($id)
     {
-        // $related_cars = MobilRental::get();
+        $related_cars = MobilRental::get();
         $car = MobilRental::findOrFail($id);
-        return view('frontend.car-detail', compact('car'));
+        return view('frontend.car-details', compact('car', 'related_cars'));
     }
 
 }

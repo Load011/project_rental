@@ -46,6 +46,22 @@
             </li> --}}
           </ul>
         </li>
+        <li class="nav-item @if (request()->routeIs('sewa.*')) menu-open @endif">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>Transaksi Rental
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('sewa.index') }}" class="nav-link @if (request()->routeIs('sewa.*')) active @endif">
+                <i class="nav-icon fas fa-users"></i>
+                <p>Sewa Mobil</p>
+              </a>
+            </li>
+          </ul>
+        </li>
         {{-- <li class="nav-item">
           <a href="{{ route('transaksi.index') }}" class="nav-link @if (request()->routeIs('transaksi.*')) active @endif">
             <i class="nav-icon fas fa-money-check"></i>
