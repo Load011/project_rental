@@ -21,11 +21,9 @@ class MobilController extends Controller
 
     public function store(Request $request)
     {
-        $request['harga_sewa'] = $this->convertToNumeric($request['harga_sewa']);
-
         $validatedData = $request->validate([
             'nama_mobil' => 'required|string|max:255',
-            'harga_sewa' => 'required|numeric',
+            'jenis_mobil' => 'required|string',
             'deskripsi_mobil' => 'required|string',
             'mileage' => 'required|integer',
             'foto_mobil' => 'required|image|mimes:jpeg,png,jpg|max:2048',
@@ -41,7 +39,7 @@ class MobilController extends Controller
 
         $car = new MobilRental();
         $car->nama_mobil = $request->nama_mobil;
-        $car->harga_sewa = $request->harga_sewa;
+        $car->jenis_mobil = $request->jenis_mobil;
         $car->deskripsi_mobil = $request->deskripsi_mobil;
         $car->mileage = $request->mileage;
         $car->foto_mobil = $filePath;
@@ -50,10 +48,5 @@ class MobilController extends Controller
         $car->save();
 
         return redirect()->route('mobil.index')->with('success', 'Mobil successfully added');
-    }
-
-    private function convertToNumeric($value)
-    {
-        return empty($value) ? null : floatval(str_replace('.', '', $value));
     }
 }

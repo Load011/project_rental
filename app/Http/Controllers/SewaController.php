@@ -21,30 +21,28 @@ class SewaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_mobil' => 'required|exists:m_mobil,id',
+            'mobil_id' => 'required',
+            'service_id' => 'required',
             'nama_penyewa' => 'required',
             'no_hp' => 'required',
             'alamat_penyewa' => 'required',
             'email_penyewa' => 'required',
             'lama_sewa' => 'required|integer',
-            'penjemputan' =>'required'
+            'penjemputan' => 'required|date',
         ]);
 
-        $car = MobilRental::findOrFail($request->id_mobil);
-        $harga_penyewaan = $car->harga_sewa * $request->lama_sewa;
-
         Sewa::create([
-            'id_mobil' => $request->id_mobil,
+            'mobil_id' => $request->mobil_id,
+            'service_id' => $request->service_id,
             'nama_penyewa' => $request->nama_penyewa,
             'no_hp' => $request->no_hp,
             'alamat_penyewa' => $request->alamat_penyewa,
             'email_penyewa' => $request->email_penyewa,
             'lama_sewa' => $request->lama_sewa,
             'penjemputan' => $request->penjemputan,
-            'harga_penyewaan' => $harga_penyewaan,
         ]);
 
-        return redirect()->route('frontend.rent')->with('success', 'Rental berhasil ditambahkan!');
+        return redirect()->back()->with('success', 'Rental booking successful!');
     }
 
 }

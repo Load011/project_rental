@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\MobilRental;
+use App\Models\ServisRental;
 
 class DashboardController extends Controller
 {
     public function index(){
 
-        $cars = MobilRental::latest()->get();
-        return view ('frontend.dashboard', compact('cars'));
+        $cars = MobilRental::with('harga')->latest()->get();
+        $services = ServisRental::all();
+        return view ('frontend.dashboard', compact('cars', 'services'));
     }
 }

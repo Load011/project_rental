@@ -22,6 +22,6 @@ class Supir extends Model
 
     public function transaksi()
     {
-        return $this->hasMany(Transaksi::class, 'id_supir');
+        return $this->hasMany(Transaksi::class, 'supir_id');
     }
 }

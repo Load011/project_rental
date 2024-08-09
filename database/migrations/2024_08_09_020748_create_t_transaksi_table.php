@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('t_transaksi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pesanan');
-            $table->unsignedBigInteger('id_supir');
-            $table->decimal('upah_supir',10,0);
+            $table->unsignedBigInteger('pemesanan_id');
+            $table->unsignedBigInteger('supir_id');
+            $table->decimal('upah_supir', 10, 0);
             $table->timestamps();
 
-            $table->foreign('id_pesanan')->references('id')->on('t_rental_daily')->onDelete('cascade');
-            $table->foreign('id_supir')->references('id')->on('m_supir')->onDelete('cascade');
+            $table->foreign('pemesanan_id')->references('id')->on('t_rental_daily')->onDelete('cascade');
+            $table->foreign('supir_id')->references('id')->on('m_supir')->onDelete('cascade');
+
         });
     }
 

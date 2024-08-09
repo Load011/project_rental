@@ -13,15 +13,15 @@ class MobilRental extends Model
 
     public $fillable = [
         'nama_mobil',
-        'harga_sewa',
+        'jenis_mobil',
         'deskripsi_mobil',
         'foto_mobil',
         'mileage',
         'tmp_duduk',
         'bahan_bakar'
     ];
-    public function sewas()
-    {
-        return $this->hasMany(Sewa::class, 'id_mobil');
+
+    public function harga(){
+        return $this->hasOne(MobilService::class, 'car_id');
     }
 }

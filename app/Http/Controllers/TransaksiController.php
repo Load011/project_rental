@@ -24,20 +24,22 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_pesanan' => 'required|exists:t_rental_daily,id',
-            'id_supir' => 'required|exists:m_supir,id',
+            'pemesanan_id' => 'required|exists:t_rental_daily,id',
+            'supir_id' => 'required|exists:m_supir,id',
         ]);
 
-        $order = Sewa::findOrFail($request->id_pesanan);
-        $upah_supir = $order->lama_sewa * 150000;
+        $sewa = Sewa::with('service')->find($request->pemesanan_id);
+
+        $upah_supir = $sewa->service->upah_supir * $sewa->lama_sewa;
 
         Transaksi::create([
-            'id_pesanan' => $request->id_pesanan,
-            'id_supir' => $request->id_supir,
+            'pemesanan_id' => $request->pemesanan_id,
+            'supir_id' => $request->supir_id,
             'upah_supir' => $upah_supir,
         ]);
 
         return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil ditambahkan!');
     }
+
 
 }

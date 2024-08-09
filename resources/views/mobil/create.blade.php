@@ -21,21 +21,27 @@
                                         <input type="text" class="form-control" id="nama_mobil" name="nama_mobil" value="{{ old('nama_mobil')}}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="harga_sewa">Harga Sewa</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Rp</span>
-                                            </div>
-                                            <input type="text" name="harga_sewa" id="harga_sewa" class="form-control currency" onkeyup="formatInput(this)">
-                                        </div>
+                                        <label for="jenis_mobil">Jenis Mobil:</label>
+                                        <select class="form-control" id="jenis_mobil" name="jenis_mobil">
+                                            <option value="">Pilih Jenis Mobil</option>
+                                            <option value="Exclusive" {{ old('jenis_mobil') == 'Exclusive' ? 'selected' : '' }}>Exclusive</option>
+                                            <option value="Harian" {{ old('jenis_mobil') == 'Harian' ? 'selected' : '' }}>Harian</option>
+                                            <option value="Offroad" {{ old('jenis_mobil') == 'Offroad' ? 'selected' : '' }}>Offroad</option>
+                                            <option value="Premium" {{ old('jenis_mobil') == 'Premium' ? 'selected' : '' }}>Premium</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="deskripsi_mobil">Deskripsi Mobil</label>
-                                        <textarea name="deskripsi_mobil" class="form-control" required></textarea>
+                                        <textarea name="deskripsi_mobil" class="form-control" required value="{{ old('deskripsi_mobil')}}"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="mileage">Mileage</label>
-                                        <input type="number" name="mileage" class="form-control" required>
+                                        <label for="mileage">Mileage:</label>
+                                        <div class="input-group">
+                                            <input type="text" name="mileage" id="mileage" class="form-control" value="{{ old('mileage')}}">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">KM</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -45,12 +51,23 @@
                                         <input type="file" name="foto_mobil" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="tmp_duduk">Tempat Duduk</label>
-                                        <input type="number" name="tmp_duduk" class="form-control" required>
+                                        <label for="tmp_duduk">Tempat Duduk:</label>
+                                        <div class="input-group">
+                                            <input type="text" name="tmp_duduk" id="tmp_duduk" class="form-control" value="{{ old('tmp_duduk')}}">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Orang Dewasa</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="bahan_bakar">Bahan Bakar</label>
-                                        <input type="text" name="bahan_bakar" class="form-control" required>
+                                        <select class="form-control" id="bahan_bakar" name="bahan_bakar">
+                                            <option value="">Pilih Jenis Bahan Bakar</option>
+                                            <option value="Solar" {{ old('bahan_bakar') == 'Solar' ? 'selected' : '' }}>Solar</option>
+                                            <option value="Pertalite" {{ old('bahan_bakar') == 'Pertalite' ? 'selected' : '' }}>Pertalite</option>
+                                            <option value="Pertamax" {{ old('bahan_bakar') == 'Pertamax' ? 'selected' : '' }}>Pertamax</option>
+                                            <option value="Dexlite" {{ old('bahan_bakar') == 'Dexlite' ? 'selected' : '' }}>Dexlite</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

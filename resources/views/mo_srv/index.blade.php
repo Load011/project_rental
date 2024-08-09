@@ -7,18 +7,18 @@
                 <div class="col-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Mobil Rental</h3>
+                            <h3 class="card-title">Mobil Service</h3>
                         </div>
 
                         <div class="card-body">
                             <div>
-                                <a href="{{ route('mobil.create')}}" class="btn btn-success mb-3">
+                                <a href="{{ route('mo_srv.create')}}" class="btn btn-success mb-3">
                                     <i class="fas fa-plus"></i>
-                                    <span>Tambah Mobil</span>
+                                    <span>Tambah Mobil Service</span>
                                 </a>
-                                @if($cars->isEmpty())
+                                @if($moses->isEmpty())
                                 <div class="alert alert-info">
-                                    Tidak Ada Mobil Tersedia
+                                    Tidak Ada Service
                                 </div>
                                 @else
                             </div>
@@ -27,27 +27,23 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Nama Mobil</th>
-                                        <th>Jenis Mobil</th>
-                                        <th>Banyak Kursi</th>
-                                        <th>Mileage</th>
-                                        <th>Bahan Bakar</th>
+                                        <th>Jenis Service</th>
+                                        <th>Harga Service</th>
                                         <th>Aksi Tambahan</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach($cars as $index=>$car)
+                                    @foreach($moses as $index=>$mose)
                                     <tr>
                                         <td>{{$index+1}}</td>
-                                        <td>{{$car->nama_mobil}}</td>
-                                        <td>{{$car->jenis_mobil}}</td>
-                                        <td>{{$car->tmp_duduk}} Orang Dewasa</td>
-                                        <td>{{$car->mileage}} KM</td>
-                                        <td>{{$car->bahan_bakar}}</td>
+                                        <td>{{$mose->mobil->nama_mobil}}</td>
+                                        <td>{{$mose->service->nama_service}}</td>
+                                        <td>Rp {{number_format($mose->harga_service, 0, ',', '.')}}</td>
                                         <td>
-                                            <a href="{{ route('mobil.edit', $car->id) }}"
+                                            <a href="{{ route('mo_srv.edit', $mose->id) }}"
                                                 class="btn btn-secondary btn-sm">Edit</a>
-                                            <form action="{{ route('mobil.destroy', $car->id) }}" method="POST"
+                                            <form action="{{ route('mo_srv.destroy', $mose->id) }}" method="POST"
                                                 style="display: inline-block;">
                                                 @csrf
                                                 @method('DELETE')

@@ -108,14 +108,13 @@
                             <div class="text">
                                 <h2 class="mb-0"><a href="#">{{ $car->nama_mobil}}</a></h2>
                                 <div class="d-flex mb-3">
-                                    <p class="price ml-auto">{{ formatRupiah($car->harga_sewa) }} <span>/day</span></p>
+                                  <p class="price ml-auto">{{ formatRupiah(optional($car->harga)->harga_service) }} <span>/day</span></p>
                                 </div>
                                 {{-- <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="{{route('car.show', $car->slug)}}" class="btn btn-secondary py-2 ml-1">Details</a></p> --}}
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                      
+                    @endforeach 
                   </div>
               </div>
           </div>
@@ -123,81 +122,54 @@
   </section>
 
   <section class="ftco-section ftco-about">
-          <div class="container">
-              <div class="row no-gutters">
-                  <div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url('{{asset('frontend/background/side1.jpg')}}');">
-                  </div>
-                  <div class="col-md-6 wrap-about ftco-animate">
-            <div class="heading-section heading-section-white pl-md-5">
-                <span class="subheading">Tentang Kami</span>
-              <h2 class="mb-4">Selamat Datang di GPAS</h2>
-
-              <h3>Membawamu kemana pun imajinasimu melangkah.​</h3>​              
-              <p>Di GPAS, kami memahami bahwa setiap perjalanan itu unik, 
-                itulah sebabnya kami menawarkan beragam kendaraan untuk memenuhi setiap preferensi dan kesempatan. 
-                Apakah Anda mencari mobil untuk menjelajahi kota, SUV yang luas untuk perjalanan keluarga, 
-                kendaraan segala medan untuk keperluan perusahaan Anda, atau sedan mewah untuk acara istimewa, 
-                kami memiliki kendaraan yang sempurna untuk Anda</p>
-              <p><a href="#" class="btn btn-primary py-3 px-4">Temukan Kendaraanmu </a></p>
-            </div>
-                  </div>
-              </div>
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url('{{asset('frontend/background/side1.jpg')}}');">
+        </div>
+        <div class="col-md-6 wrap-about ftco-animate">
+          <div class="heading-section heading-section-white pl-md-5">
+            <span class="subheading">Tentang Kami</span>
+            <h2 class="mb-4">Selamat Datang di GPAS</h2>
+            <h3>Membawamu kemana pun imajinasimu melangkah.​</h3>​              
+            <p>Di GPAS, kami memahami bahwa setiap perjalanan itu unik, 
+              itulah sebabnya kami menawarkan beragam kendaraan untuk memenuhi setiap preferensi dan kesempatan. 
+              Apakah Anda mencari mobil untuk menjelajahi kota, SUV yang luas untuk perjalanan keluarga, 
+              kendaraan segala medan untuk keperluan perusahaan Anda, atau sedan mewah untuk acara istimewa, 
+              kami memiliki kendaraan yang sempurna untuk Anda</p>
+            <p><a href="#" class="btn btn-primary py-3 px-4">Temukan Kendaraanmu </a></p>
           </div>
-      </section>
-
-      <section class="ftco-section">
-          <div class="container">
-              <div class="row justify-content-center mb-5">
-        <div class="col-md-7 text-center heading-section ftco-animate">
-            <span class="subheading">Services</span>
-          <h2 class="mb-3">Our Latest Services</h2>
         </div>
       </div>
-              <div class="row">
-                  <div class="col-md-3">
-                      <div class="services services-2 w-100 text-center">
-              <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-wedding-car"></span></div>
-              <div class="text w-100">
-              <h3 class="heading mb-2">Wedding Ceremony</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+    </div>
+  </section>
+
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-7 text-center heading-section ftco-animate">
+          <span class="subheading">Services</span>
+          <h2 class="mb-3">Our Latest Services</h2>  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          @foreach($services as $service)
+          <div class="services services-2 w-100 text-center">
+            <div class="icon d-flex align-items-center justify-content-center">
+              <span class="flaticon-transportation"></span>
             </div>
           </div>
-                  </div>
-                  <div class="col-md-3">
-                      <div class="services services-2 w-100 text-center">
-              <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
-              <div class="text w-100">
-              <h3 class="heading mb-2">City Transfer</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-            </div>
+          <div class="text-w-100">
+            <h3 class="heading mb-2">{{$service->nama_service}}</h3>
+            <p>{{$service->deskripsi_servis}}</p>
           </div>
-                  </div>
-                  <div class="col-md-3">
-                      <div class="services services-2 w-100 text-center">
-              <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
-              <div class="text w-100">
-              <h3 class="heading mb-2">Airport Transfer</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-            </div>
-          </div>
-                  </div>
-                  <div class="col-md-3">
-                    <a href="{{route('frontend.rent')}}">
-                      <div class="services services-2 w-100 text-center">
-                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
-                      </div>
-                        <div class="text w-100">
-                          <h3 class="heading mb-2">Whole City Tour</h3>
-                          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                  </div>
-              </div>
-          </div>
-      </section>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </section>
+
+      
 
   <section class="ftco-section testimony-section bg-light">
     <div class="container">

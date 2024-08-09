@@ -15,8 +15,8 @@
                             <form action="{{ route('transaksi.store') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="id_pesanan">Pesanan</label>
-                                    <select name="id_pesanan" class="form-control" required>
+                                    <label for="pemesanan_id">Pesanan</label>
+                                    <select name="pemesanan_id" class="form-control" required>
                                         <option value="" disabled selected>Pilih Pesanan</option>
                                         @foreach($orders as $order)
                                             <option value="{{ $order->id }}">{{ $order->nama_penyewa }} - {{ $order->lama_sewa }} hari</option>
@@ -24,8 +24,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id_supir">Supir</label>
-                                    <select name="id_supir" class="form-control" required>
+                                    <label for="supir_id">Supir</label>
+                                    <select name="supir_id" class="form-control" required>
                                         <option value="" disabled selected>Pilih Supir</option>
                                         @foreach($drivers as $driver)
                                             <option value="{{ $driver->id }}">{{ $driver->nama_supir }}</option>

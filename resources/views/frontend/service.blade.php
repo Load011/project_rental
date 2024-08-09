@@ -27,17 +27,19 @@ data-stellar-background-ratio="0.5">
   <div class="row">
     <div class="col-md-3">
       <div class="services services-2 w-100 text-center">
-        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span>
+        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-wedding-car"></span>
         </div>
         <div class="text w-100">
-          <h3 class="heading mb-2">Wedding Ceremony</h3>
-          <p>For your best day of your life, we provide you the best accommodation</p>
+          <a href="{{route('frontend.wedding')}}">
+            <h3 class="heading mb-2">Wedding Ceremony</h3>
+            <p>For your best day of your life, we provide you the best accommodation</p>
+          </a>
         </div>
       </div>
     </div>
     <div class="col-md-3">
       <div class="services services-2 w-100 text-center">
-        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span>
+        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span>
         </div>
         <div class="text w-100">
           <h3 class="heading mb-2">Toba Lake and Samosir</h3>

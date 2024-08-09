@@ -29,7 +29,7 @@ data-stellar-background-ratio="0.5">
                 </div>
                 <div class="text">
                     <h2>{{ $car->nama_mobil }}</h2>
-                    <p><strong>Harga Sewa:</strong> {{ formatRupiah($car->harga_sewa) }} / hari</p>
+                    <p><strong>Harga Sewa:</strong> {{ formatRupiah(optional($car->harga)->harga_service) }} / hari</p>
                     <a href="{{ route('car.show', $car->id) }}" class="btn btn-primary">View Details</a>
                 </div>
             </div>

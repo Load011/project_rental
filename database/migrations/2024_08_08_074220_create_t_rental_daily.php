@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('t_rental_daily', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_mobil');
+            $table->unsignedBigInteger('mobil_id');
+            $table->unsignedBigInteger('service_id');
             $table->string('nama_penyewa');
             $table->string('no_hp');
             $table->string('alamat_penyewa');
@@ -21,6 +22,10 @@ return new class extends Migration
             $table->integer('lama_sewa');
             $table->dateTime('penjemputan');
             $table->timestamps();
+
+            $table->foreign('mobil_id')->references('id')->on('m_mobil')->onDelete('cascade');
+            $table->foreign('service_id')->references('id')->on('m_service')->onDelete('cascade');
+
         });
     }
 

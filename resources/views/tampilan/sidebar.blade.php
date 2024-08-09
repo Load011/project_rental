@@ -18,7 +18,7 @@
             <p>Dashboard</p>
           </a>
         </li>
-        <li class="nav-item @if (request()->routeIs('mobil.*') || request()->routeIs('penyewa.*') || request()->routeIs('supir.*'))) menu-open @endif">
+        <li class="nav-item @if (request()->routeIs('mobil.*') || request()->routeIs('service.*') || request()->routeIs('supir.*'))) menu-open @endif">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-database"></i>
             <p>Master Data
@@ -38,7 +38,19 @@
                 <p>Supir</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('service.index') }}" class="nav-link @if (request()->routeIs('service.*')) active @endif">
+                <i class="nav-icon fas fa-th-list"></i>
+                <p>Service</p>
+              </a>
+            </li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('mo_srv.index') }}" class="nav-link @if (request()->routeIs('mo_srv.*')) active @endif">
+            <i class="nav-icon fas fa-exchange-alt"></i>
+            <p>Mobil & Service</p>
+          </a>
         </li>
         <li class="nav-item @if (request()->routeIs('sewa.*')) menu-open @endif">
           <a href="#" class="nav-link">
